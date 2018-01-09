@@ -1,4 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Database manager!</h1>
+<main>
+<div class="pageSelect">
+	{% if allProjects.has_prev %}
+	<a href="{{ url_for(showManager(allProjects.prev))}}">Prev</a>
+	{% endif %}
+	{% if allProjects.has_next %}
+	<a href="{{ url_for(showManager(allProjects.next))}}">Next</a>
+	{% endif %}
+</div>
+<div class="pagination">
+	<p><a href="#">Add a Project</a></p>
+	<table class="maintable">
+	{% for project in allProjects.items %}
+		<tr class="maintr">
+			<td class="maintd">{{ project.id }}</td>
+			<td>{{ project.name }}</td>
+			<td>{{ project.address }}</td>
+			<td>{{ project.date }}</td>
+			<td>{{ project.status }}</td>
+			<td><a href="#">File</a></td>
+			<td><a href="#">Edit</a></td>
+			<td><a href="#">Delete</a></td>
+		</tr>
+	{% endfor %}
+	</table>
+</div>
+</main>
 {% endblock %}

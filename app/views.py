@@ -24,8 +24,10 @@ def showSearch():
 
 
 @app.route('/manager/')
-def showManager():
-	return render_template('manager.html')
+def showManager(page=1):
+	allProjects = allPaginatedProjects(page)
+	return render_template('manager.html',
+						   allProjects=allProjects)
 
 
 @app.route('/map/')
@@ -33,17 +35,17 @@ def showMap():
 	return render_template('map.html')
 
 
-@app.route('/manager/new/', methods=['POST'])
+@app.route('/manager/new/', methods=['GET', 'POST'])
 def newProject():
 	return
 
 
-@app.route('/manager/edit/', methods=['POST'])
+@app.route('/manager/edit/', methods=['GET', 'POST'])
 def editProject():
 	return
 
 
-@app.route('/manager/delete/', methods=['POST'])
+@app.route('/manager/delete/', methods=['GET', 'POST'])
 def deleteProject():
 	return
 
