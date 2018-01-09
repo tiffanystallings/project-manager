@@ -10,8 +10,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-class Projects(db.Model):
-	__tablename__ = 'projects'
+class Project(db.Model):
+	__tablename__ = 'bns_projects'
 	id = db.Column(db.String(80), primary_key=True)
 	name = db.Column(db.String(80), nullable=False)
 	date = db.Column(db.DateTime, default=dt.datetime.utcnow())

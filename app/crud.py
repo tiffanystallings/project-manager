@@ -2,8 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 from models import db
-from models import Projects
+from models import Project
 
 def showOpenProjects():
-	print("Querying Projects")
-	return db.session.query(Projects).filter_by(status="Open").all()
+	return db.session.query(Project).filter_by(status="Open").all()

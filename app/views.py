@@ -14,7 +14,8 @@ from models import app
 @app.route('/home/')
 def showMain():
 	openProjects = showOpenProjects()
-	return render_template('home.html')
+	return render_template('home.html',
+						   openProjects=openProjects)
 
 
 @app.route('/search/')

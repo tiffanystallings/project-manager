@@ -7,6 +7,12 @@
 	</script>
 </head>
 <body>
+	<nav>
+		<a href="{{ url_for('showMain') }}">Home</a>
+		<a href="{{ url_for('showSearch') }}">Search</a>
+		<a href="{{ url_for('showManager') }}">Manage Projects</a>
+		<a href="{{ url_for('showMap') }}">Project Map</a>
+	</nav>
 	{% block content %}{% endblock %}
 </body>
 </html>

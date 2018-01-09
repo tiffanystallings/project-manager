@@ -1,4 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Home!</h1>
+<main>
+<div>
+{% if openProjects|length %}
+	<table class="maintable">
+	{% for project in openProjects %}
+		<tr class="maintr">
+			<td class="maintd">{{ project.id }}</td>
+			<td>{{ project.name }}</td>
+			<td>{{ project.address }}</td>
+			<td>{{ project.date }}</td>
+		</tr>
+	{% endfor %}
+	</table>
+{% else %}
+	No open projects at this time!
+{% endif %}
+</div>
+</main>
 {% endblock %}
