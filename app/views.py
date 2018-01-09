@@ -33,6 +33,21 @@ def showMap():
 	return render_template('map.html')
 
 
+@app.route('/manager/new/', methods=['POST'])
+def newProject():
+	return
+
+
+@app.route('/manager/edit/', methods=['POST'])
+def editProject():
+	return
+
+
+@app.route('/manager/delete/', methods=['POST'])
+def deleteProject():
+	return
+
+
 if __name__ == '__main__':
 	app.secret_key = 'waffle'
 	port = int(os.environ.get("PORT", 5000))
