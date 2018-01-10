@@ -3,25 +3,39 @@
 <main>
 <div class="pageSelect">
 	{% if allProjects.has_prev %}
-	<a href="{{ url_for(showManager(allProjects.prev))}}">Prev</a>
+	<a href="{{ url_for('showManager', page=allProjects.prev_num)}}">&lt;&lt; Prev</a>
 	{% endif %}
 	{% if allProjects.has_next %}
-	<a href="{{ url_for(showManager(allProjects.next))}}">Next</a>
+	<a href="{{ url_for('showManager', page=allProjects.next_num)}}">Next &gt;&gt;</a>
 	{% endif %}
 </div>
 <div class="pagination">
-	<p><a href="#">Add a Project</a></p>
+	<p><a href="{{ url_for('newProject') }}">Add a Project</a></p>
 	<table class="maintable">
+		<tr class="thead">
+			<td>Project Status</td>
+			<td>PCE ID</td>
+			<td>Project Name</td>
+			<td>Project Address</td>
+			<td>Issue Date</td>
+			<td>Date to Field</td>
+			<td>Fieldwork In</td>
+			<td>Permit In</td>
+			<td>Date Completed</td>
+			<td>Comcast Engineer</td>
+		</tr>
 	{% for project in allProjects.items %}
 		<tr class="maintr">
-			<td class="maintd">{{ project.id }}</td>
-			<td>{{ project.name }}</td>
-			<td>{{ project.address }}</td>
-			<td>{{ project.date }}</td>
 			<td>{{ project.status }}</td>
-			<td><a href="#">File</a></td>
-			<td><a href="#">Edit</a></td>
-			<td><a href="#">Delete</a></td>
+			<td>{{ project.id }}</td>
+			<td><a href="{{ url_for('viewProject', pce_id=project.id) }}">{{ project.name }}</a></td>
+			<td>{{ project.address }}</td>
+			<td>{{ project.date_in }}</td>
+			<td>{{ project.field_out }}</td>
+			<td>{{ project.field_in }}</td>
+			<td>{{ project.permit_in }}</td>
+			<td>{{ project.completed }}</td>
+			<td>{{ project.com_engineer }}</td>
 		</tr>
 	{% endfor %}
 	</table>

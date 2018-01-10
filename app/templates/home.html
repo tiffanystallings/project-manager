@@ -1,15 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
 <main>
+<h2>Open Projects at a Glance</h2>
 <div>
 {% if openProjects|length %}
 	<table class="maintable">
+		<tr class="header">
+			<td>Project Status</td>
+			<td>PCE ID</td>
+			<td>Project Name</td>
+			<td>Project Address</td>
+			<td>Issue Date</td>
+			<td>Date to Field</td>
+			<td>Fieldwork In</td>
+			<td>Permit In</td>
+			<td>Permit Required?</td>
+			<td>Comcast Engineer</td>
 	{% for project in openProjects %}
 		<tr class="maintr">
-			<td class="maintd">{{ project.id }}</td>
-			<td>{{ project.name }}</td>
+			<td>{{ project.status }}</td>
+			<td>{{ project.id }}</td>
+			<td><a href="{{ url_for('viewProject', pce_id=project.id) }}">{{ project.name }}</a></td>
 			<td>{{ project.address }}</td>
-			<td>{{ project.date }}</td>
+			<td>{{ project.date_in }}</td>
+			<td>{{ project.field_out }}</td>
+			<td>{{ project.field_in }}</td>
+			<td>{{ project.permit_in }}</td>
+			<td>{{ project.permit_req }}</td>
+			<td>{{ project.com_engineer }}</td>
 		</tr>
 	{% endfor %}
 	</table>

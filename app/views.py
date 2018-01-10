@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template
+from flask import request
 
 import os
 
@@ -23,9 +24,9 @@ def showSearch():
 	return render_template('search.html')
 
 
-@app.route('/manager/')
-def showManager(page=1):
-	allProjects = allPaginatedProjects(page)
+@app.route('/manager/<int:page>/')
+def showManager(page):
+	allProjects = allPaginatedProjects(page=page)
 	return render_template('manager.html',
 						   allProjects=allProjects)
 
@@ -37,7 +38,15 @@ def showMap():
 
 @app.route('/manager/new/', methods=['GET', 'POST'])
 def newProject():
-	return
+	if request.method == 'POST':
+		return createProject(request)
+	return render_template('new_project.html')
+
+
+@app.route('/manager/view/<pce_id>')
+def viewProject(pce_id):
+	project = getProjectById(pce_id)
+	return render_template('project.html', project=project)
 
 
 @app.route('/manager/edit/', methods=['GET', 'POST'])
