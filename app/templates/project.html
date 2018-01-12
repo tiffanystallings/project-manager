@@ -1,4 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Hello {{ project.name }}!</h1>
+<main>
+	<div class="project_info">
+		<h2>{{ project.name }}</h2>
+		<h3>PCE ID: {{ project.id }}</h3>
+		<p>Status: {{ project.status }}</p>
+		<p>Address: {{ project.address }}</p>
+		<p>Coordinates: {{ project.coords }}</p>
+		<p>Type: {{ project.type }}</p>
+		<p>Sub-Type (Relo Only): {{ project.subtype }}</p>
+		<p>Issued: {{ project.date_in.date() }}</p>
+		{% if project.completed != None %}
+		<p>Completed: {{ project.completed.date() }}</p>
+		{% else %}
+		<p>Completed: N/A</p>
+		{% endif %}
+	</div>
+	<div class="project_details">
+		<p>Comcast Engineer: {{ project.com_engineer }}</p>
+		<p>Permit Required? {{ project.permit_req }}</p>
+		{% if project.permit_req == 'Yes' %}
+		<p>Permit Completed: {{ project.permit_in }}</p>
+		{% endif %}
+		<p>Sent to Field: {{ project.field_out }}</p>
+		<p>Fieldwork Complete: {{ project.field_in }}</p>
+		<p>Field Engineer: {{ project.field_engineer }}</p>
+		<p>Comments: {{ project.comments }}</p>
+		<p>File Location: {{ project.file }}</p>
+	</div>
+</main>
 {% endblock %}

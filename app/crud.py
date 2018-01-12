@@ -13,7 +13,7 @@ from models import Project
 
 def showOpenProjects():
 	return Project.query.order_by(Project.date_in).filter(
-		Project.status!="Closed").all()
+		Project.status!="Completed").all()
 
 
 def allPaginatedProjects(page=1):

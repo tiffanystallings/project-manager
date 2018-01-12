@@ -30,11 +30,41 @@
 			<td>{{ project.id }}</td>
 			<td><a href="{{ url_for('viewProject', pce_id=project.id) }}">{{ project.name }}</a></td>
 			<td>{{ project.address }}</td>
-			<td>{{ project.date_in }}</td>
-			<td>{{ project.field_out }}</td>
-			<td>{{ project.field_in }}</td>
-			<td>{{ project.permit_in }}</td>
-			<td>{{ project.completed }}</td>
+			<td>
+				{% if project.date_in != None %}
+					{{ project.date_in.date() }}
+				{% else %}
+					N/A
+				{% endif %}
+			</td>
+			<td>
+				{% if project.field_out != None %}
+					{{ project.field_out.date() }}
+				{% else %}
+					N/A
+				{% endif %}
+			</td>
+			<td>
+				{% if project.field_in != None %}
+					{{ project.field_in.date() }}
+				{% else %}
+					N/A
+				{% endif %}
+			</td>
+			<td>
+				{% if project.permit_in != None %}
+					{{ project.permit_in.date() }}
+				{% else %}
+					N/A
+				{% endif %}
+			</td>
+			<td>
+				{% if project.completed != None %}
+					{{ project.completed.date() }}
+				{% else %}
+					N/A
+				{% endif %}
+			</td>
 			<td>{{ project.com_engineer }}</td>
 		</tr>
 	{% endfor %}
