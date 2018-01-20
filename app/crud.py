@@ -11,9 +11,10 @@ from models import db
 from models import Project
 
 
-def showOpenProjects():
+def showOpenProjects(page=1):
+	per_page = 15
 	return Project.query.order_by(Project.date_in).filter(
-		Project.status!="Completed").all()
+		Project.status!="Completed").paginate(page, per_page)
 
 
 def allPaginatedProjects(page=1):
@@ -46,6 +47,19 @@ def createProject(request):
 
 def getProjectById(pce_id):
 	return Project.query.filter_by(id=pce_id).one()
+
+
+def completeProject(pce_id):
+	date_out = datetime.strptime(datetime.strftime(
+		datetime.now(), '%Y-%m-%d'), '%Y-%m-%d')
+	project = getProjectById(pce_id)
+	project.status = "Completed"
+	project.completed = date_out
+
+	db.session.add(project)
+	db.session.commit()
+
+	return redirect(url_for('showManager', page=1))
 
 
 def editProject():

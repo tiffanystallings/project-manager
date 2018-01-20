@@ -23,6 +23,7 @@
 			<td>Permit In</td>
 			<td>Date Completed</td>
 			<td>Comcast Engineer</td>
+			<td></td>
 		</tr>
 	{% for project in allProjects.items %}
 		<tr class="maintr">
@@ -66,6 +67,11 @@
 				{% endif %}
 			</td>
 			<td>{{ project.com_engineer }}</td>
+			<td>
+				{% if project.status != "Completed" %}
+					<a href="#">Complete</a>
+				{% endif %}
+			</td>
 		</tr>
 	{% endfor %}
 	</table>

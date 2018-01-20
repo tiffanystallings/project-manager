@@ -8,8 +8,8 @@
 </head>
 <body>
 	<nav>
-		<a href="{{ url_for('showMain') }}">Home</a>
-		<a href="{{ url_for('showSearch') }}">Search</a>
+		<a href="{{ url_for('showMain', page=1) }}">Home</a>
+		<a href="{{ url_for('showSearch', page=1) }}">Search</a>
 		<a href="{{ url_for('showManager', page=1) }}">Manage Projects</a>
 		<a href="{{ url_for('showMap') }}">Project Map</a>
 	</nav>
