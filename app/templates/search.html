@@ -4,41 +4,47 @@
 	<h2>Search All Projects</h2>
 	<div>
 	<form action="#" method="post">
-		<p>ID: <input type="text" size="30" name="id" required></p>
-		<p>Name: <input type="text" size="30" name="name" required></p>
-		<p>Date Issued: <input type="date" name="date_in"></p>
-		<p>Address: <input type="text" size="30" name="address" required></p>
-		<p>Status: <select name="status">
-				<option value="New">New</option>
-				<option value="InField">In the Field</option>
-				<option value="InPermitting">In Permitting</option>
-				<option value="Completed">Completed</option>
-			</select>
-		</p>
-		<p>Type: <select name="type">
-				<option value="ME">Metro E</option>
-				<option value="SMB">SMB</option>
-				<option value="CWS">CWS</option>
-				<option value="SFU">SFU</option>
-				<option value="MDU">MDU</option>
-				<option value="NodeSplit">Node Split</option>
-				<option value="Relo">Relo (All)</option>
-			</select>
-		</p>
-		<p>Sub-Type: <select name="subtype">
-				<option value="None">N/A</option>
-				<option value="SpanReplacement">Span Replacement</option>
-				<option value="Markup">Markup</option>
-				<option value="Relo">Relo</option>
-				<option value="DropShorten">Drop Shorten</option>
-			</select>
-		</p>
-		<p>Comcast Engineer: <input type="text" size="30" name="com_engineer"></p>
-		<p>Field Engineer: <input type="text" size="30" name="field_engineer"></p>
+		<table>
+			<tr>
+				<td><p>ID: <input type="text" size="30" name="id" required></p></td>
+				<td><p>Name: <input type="text" size="30" name="name" required></p></td>
+				<td><p>Address: <input type="text" size="30" name="address" required></p></td>
+			</tr><tr>
+				<td><p>Status: <select name="status">
+					<option value="New">New</option>
+					<option value="InField">In the Field</option>
+					<option value="InPermitting">In Permitting</option>
+					<option value="Completed">Completed</option>
+					</select>
+				</p></td>
+				<td><p>Type: <select name="type">
+					<option value="ME">Metro E</option>
+					<option value="SMB">SMB</option>
+					<option value="CWS">CWS</option>
+					<option value="SFU">SFU</option>
+					<option value="MDU">MDU</option>
+					<option value="NodeSplit">Node Split</option>
+					<option value="Relo">Relo (All)</option>
+				</select>
+				</p></td>
+				<td><p>Sub-Type: <select name="subtype">
+					<option value="None">N/A</option>
+					<option value="SpanReplacement">Span Replacement</option>
+					<option value="Markup">Markup</option>
+					<option value="Relo">Relo</option>
+					<option value="DropShorten">Drop Shorten</option>
+					</select>
+				</p></td>
+			</tr><tr>
+				<td><p>Date Issued: <input type="date" name="date_in"></p></td>
+				<td><p>Comcast Engineer: <input type="text" size="30" name="com_engineer"></p></td>
+				<td><p>Field Engineer: <input type="text" size="30" name="field_engineer"></p></td>
+			</tr></table>
 		<p><input type='submit' value='Search'></p>
 	</form>
 	</div>
 	<div>
+		Search results will show up here eventually...
 	</div>
 </main>
 {% endblock %}
