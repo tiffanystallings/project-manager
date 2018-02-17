@@ -114,9 +114,10 @@ def editProject(pce_id):
 	return render_template('edit_project.html', project=project)
 
 
-@app.route('/manager/delete/', methods=['GET', 'POST'])
-def deleteProject():
-	return
+@app.route('/manager/delete/<pce_id>')
+def deleteProject(pce_id):
+	project = getProjectById(pce_id)
+	return removeProject(project)
 
 
 if __name__ == '__main__':

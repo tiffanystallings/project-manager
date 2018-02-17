@@ -98,5 +98,8 @@ def updateProject(project, request):
 	return redirect(url_for('viewProject', pce_id=project.id))
 
 
-def removeProject():
-	return
+def removeProject(project):
+	db.session.delete(project)
+	db.session.commit()
+
+	return redirect(url_for('showManager', page=1))

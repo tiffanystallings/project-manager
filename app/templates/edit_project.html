@@ -60,5 +60,7 @@
 			<textarea name="comments">{{ project.comments }}</textarea>
 			<p><input type='submit' value='Save'></p>
 	</form>
+	<hr>
+	<p><a href="{{ url_for('deleteProject', pce_id=project.id) }}">Delete Project</a></p>
 </main>
 {% endblock %}
