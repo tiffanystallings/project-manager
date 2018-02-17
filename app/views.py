@@ -106,9 +106,10 @@ def viewProject(pce_id):
 	return render_template('project.html', project=project)
 
 
-@app.route('/manager/edit/', methods=['GET', 'POST'])
-def editProject():
-	return
+@app.route('/manager/edit/<pce_id>', methods=['GET', 'POST'])
+def editProject(pce_id):
+	project = getProjectById(pce_id)
+	return render_template('edit_project.html', project=project)
 
 
 @app.route('/manager/delete/', methods=['GET', 'POST'])
