@@ -21,10 +21,22 @@
 		<p>Comcast Engineer: {{ project.com_engineer }}</p>
 		<p>Permit Required? {{ project.permit_req }}</p>
 		{% if project.permit_req == 'Yes' %}
-		<p>Permit Completed: {{ project.permit_in }}</p>
+		{% if project.permit_in != None %}
+		<p>Permit Completed: {{ project.permit_in.date() }}</p>
+		{% else %}
+		<p>Permit Completed: N/A</p>
 		{% endif %}
-		<p>Sent to Field: {{ project.field_out }}</p>
-		<p>Fieldwork Complete: {{ project.field_in }}</p>
+		{% endif %}
+		{% if project.field_out != None %}
+		<p>Sent to Field: {{ project.field_out.date() }}</p>
+		{% else %}
+		<p>Sent to Field: N/A</p>
+		{% endif %}
+		{% if project.field_in != None %}
+		<p>Fieldwork Complete: {{ project.field_in.date() }}</p>
+		{% else %}
+		<p>Fieldwork Complete: N/A</p>
+		{% endif %}
 		<p>Field Engineer: {{ project.field_engineer }}</p>
 		<p>Comments: {{ project.comments }}</p>
 		<p>File Location: {{ project.file }}</p>

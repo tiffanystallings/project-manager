@@ -62,9 +62,41 @@ def completeProject(pce_id):
 	return redirect(url_for('showManager', page=1))
 
 
-def editProject():
-	return
+def updateProject(project, request):
+	if request.form['date_in']:
+		project.date_in = datetime.strptime(request.form['date_in'], '%Y-%m-%d')
+
+	if request.form['completed']:
+		project.completed = datetime.strptime(request.form['completed'], '%Y-%m-%d')
+
+	if request.form['permit_in']:
+		project.permit_in = datetime.strptime(request.form['permit_in'], '%Y-%m-%d')
+
+	if request.form['field_in']:
+		project.field_in = datetime.strptime(request.form['field_in'], '%Y-%m-%d')
+
+	if request.form['field_out']:
+		project.field_out = datetime.strptime(request.form['field_out'], '%Y-%m-%d')
 
 
-def deleteProject():
+	project.id = request.form['id']
+	project.name = request.form['name']
+	project.address = request.form['address']
+	project.type = request.form['type']
+	project.status = request.form['status']
+	project.file = request.form['file']
+	project.coords = request.form['coords']
+	project.subtype = request.form['subtype']
+	project.permit_req = request.form['permit_req']
+	project.com_engineer = request.form['com_engineer']
+	project.field_engineer = request.form['field_engineer']
+	project.comments = request.form['comments']
+
+	db.session.add(project)
+	db.session.commit()
+
+	return redirect(url_for('viewProject', pce_id=project.id))
+
+
+def removeProject():
 	return

@@ -109,6 +109,8 @@ def viewProject(pce_id):
 @app.route('/manager/edit/<pce_id>', methods=['GET', 'POST'])
 def editProject(pce_id):
 	project = getProjectById(pce_id)
+	if request.method == 'POST':
+		return updateProject(project, request)
 	return render_template('edit_project.html', project=project)
 
 

@@ -1,6 +1,64 @@
 {% extends "base.html" %}
 {% block content %}
 <main>
-	Editing {{ project.name }}
+	<form action="{{ url_for('editProject', pce_id=project.id) }}" method="post">
+		<p>ID: <input type="text" size="30" name="id" value="{{ project.id }}"></p>
+			<p>Name: <input type="text" size="30" name="name" value="{{ project.name }}"></p>
+			<p>Date Issued: <input type="date" name="date_in" value="{{ project.date_in.date() }}"></p>
+			<p>Date Completed: <input type="date" name="completed"
+				{% if project.completed != None %}
+				value="{{ project.completed.date() }}"
+				{% endif %}></p>
+			<p>Address: <input type="text" size="30" name="address" value="{{ project.address }}"></p>
+			<p>Coordinates: <input type="text" size="30" name="coords" value="{{ project.coords }}"></p>
+			<p>Status: <select name="status">
+					<option value="New" {% if project.status == "New" %}selected{% endif %}>New</option>
+					<option value="InField" {% if project.status == "InField" %}selected{% endif %}>In the Field</option>
+					<option value="InPermitting" {% if project.status == "InPermitting" %}selected{% endif %}>In Permitting</option>
+					<option value="Completed" {% if project.status == "Completed" %}selected{% endif %}>Completed</option>
+				</select>
+			</p>
+			<p>Type: <select name="type">
+					<option value="ME" {% if project.type == "ME" %}selected{% endif %}>Metro E</option>
+					<option value="SMB" {% if project.type == "SMB" %}selected{% endif %}>SMB</option>
+					<option value="CWS" {% if project.type == "CWS" %}selected{% endif %}>CWS</option>
+					<option value="SFU" {% if project.type == "SFU" %}selected{% endif %}>SFU</option>
+					<option value="MDU" {% if project.type == "MDU" %}selected{% endif %}>MDU</option>
+					<option value="NodeSplit" {% if project.type == "NodeSplit" %}selected{% endif %}>Node Split</option>
+					<option value="Relo" {% if project.type == "Relo" %}selected{% endif %}>Relo (All)</option>
+				</select>
+			</p>
+			<p>Sub-Type: <select name="subtype">
+					<option value="None" {% if project.subtype == "None" %}selected{% endif %}>N/A</option>
+					<option value="SpanReplacement" {% if project.subtype == "SpanReplacement" %}selected{% endif %}>Span Replacement</option>
+					<option value="Markup" {% if project.subtype == "Markup" %}selected{% endif %}>Markup</option>
+					<option value="Relo" {% if project.subtype == "Relo" %}selected{% endif %}>Relo</option>
+					<option value="DropShorten" {% if project.subtype == "DropShorten" %}selected{% endif %}>Drop Shorten</option>
+				</select>
+			</p>
+			<p>Permit Required: <select name="permit_req">
+					<option value="Yes" {% if project.permit_req == "Yes" %}selected{% endif %}>Yes</option>
+					<option value="No" {% if project.permit_req == "No" %}selected{% endif %}>No</option>
+				</select>
+			</p>
+			<p>Permit In (if applicable): <input type="date" name="permit_in"
+				{% if project.permit_in != None %}
+				value="{{ project.permit_in.date() }}"
+				{% endif %}></p>
+			<p>Comcast Engineer: <input type="text" size="30" name="com_engineer" value="{{ project.com_engineer }}"></p>
+			<p>Field Engineer: <input type="text" size="30" name="field_engineer" value="{{ project.field_engineer }}"></p>
+			<p>Sent to Field: <input type="date" name="field_out"
+				{% if project.field_out != None %}
+				value="{{ project.field_out.date() }}"
+				{% endif %}></p>
+			<p>Fieldwork Complete: <input type="date" name="field_in"
+				{% if project.field_in != None %}
+				value="{{ project.field_in.date() }}"
+				{% endif %}></p>
+			<p>File Location: <input type="text" size="30" name="file" value="{{ project.file }}"></p>
+			<p>Comments:</p>
+			<textarea name="comments">{{ project.comments }}</textarea>
+			<p><input type='submit' value='Save'></p>
+	</form>
 </main>
 {% endblock %}
